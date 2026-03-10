@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Catering Delighy</title>
+    <link rel="icon" href="logowarung.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #12b368;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #151515;
+        }
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px 24px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav ul li a:hover {
+            background-color: #2c2c2c;
+        }
+        nav ul li a.active {
+            background-color: #12b368;
+            color: white;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+        }
+        article {
+            flex: 2;
+        }
+        aside {
+            flex: 1;
+            background-color: #e7e7e7;
+            padding: 20px;
+            border-radius: 10px;
+            align-self: start;
+        }
+        section {
+            margin-bottom: 30px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .promo-card {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .stat-item {
+            margin-bottom: 20px;
+        }
+        progress {
+            width: 100%;
+            height: 15px;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+        footer address {
+            font-style: normal;
+            margin: 10px 0;
+        }
+        h2, h3 {
+            color: #12b368;
+            margin-bottom: 15px;
+        }
+        .testimonial {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logowarung.png" alt="Logo Catering Delighy" width="70">
+        <h1>Catering Delighy</h1>
+        <p>Layanan Pre-Order Catering Praktis dan Lezat</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Beranda</a></li>
+            <li><a href="menumakan.html">Paket Catering</a></li>
+            <li><a href="aktivitasriwayat.html">Aktivitas</a></li>
+            <li><a href="pesan.html">Kotak Masuk</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <section>
+                <h2>Selamat Datang di Catering Delighy</h2>
+                <p>Kami menyediakan layanan pre-order catering untuk berbagai acara Anda. Semua menu kami olah dengan bahan berkualitas dan cita rasa terbaik.</p>
+                
+                <figure>
+                    <img src="https://via.placeholder.com/800x200/12b368/ffffff?text=Delighy+Catering+Banner" alt="Banner Catering Delighy" style="width:100%; border-radius:10px; margin:20px 0;">
+                </figure>
+
+                <article class="promo-card">
+                    <h3>🎉 Promo Spesial Bulan Ini</h3>
+                    <p>Diskon 15% untuk pemesanan paket Nasi Kotak minimal 25 pax! Berlaku untuk semua acara.</p>
+                    <p><strong>Periode:</strong> 10 - 31 Maret 2026</p>
+                </article>
+            </section>
+
+            <section>
+                <h3>Mengapa Memilih Delighy?</h3>
+                <ul>
+                    <li>Bahan berkualitas dan halal</li>
+                    <li>Pemesanan H-3 untuk persiapan maksimal</li>
+                    <li>Pengiriman tepat waktu</li>
+                    <li>Varian menu lengkap</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Testimoni Pelanggan</h3>
+                <article class="testimonial">
+                    <p>"Masakannya enak, porsinya pas. Sangat recommended untuk acara kantor!"</p>
+                    <footer>- Ibu Sarah, Kantor BCA</footer>
+                </article>
+                <article class="testimonial">
+                    <p>"Pesan buat arisan bulanan, semua suka. Next order pasti kesini lagi."</p>
+                    <footer>- Bu RT 05, Perumahan Mutiara</footer>
+                </article>
+            </section>
+        </article>
+
+        <aside>
+            <h3>📊 Statistik Cepat</h3>
+            
+            <article class="stat-item">
+                <h4>Pesanan Hari Ini</h4>
+                <p>15 pesanan aktif</p>
+                <progress value="15" max="30"></progress>
+                <small>Sisa kuota: 15 pax</small>
+            </article>
+            
+            <article class="stat-item">
+                <h4>Paket Terlaris</h4>
+                <p>Nasi Kotak Spesial</p>
+                <small>Terjual 120 pax bulan ini</small>
+            </article>
+
+            <article class="stat-item">
+                <h4>Jam Operasional</h4>
+                <p>Senin - Sabtu: 08.00 - 20.00</p>
+                <p>Minggu: 10.00 - 18.00</p>
+            </article>
+
+            <article class="stat-item">
+                <h4>Deadline PO</h4>
+                <p>H-3: 18.00 WIB</p>
+                <p><mark>Hari ini batas PO untuk acara Sabtu</mark></p>
+            </article>
+        </aside>
+    </main>
+
+    <footer>
+        <address>
+            <p>Jl. Kuliner Nusantara No. 15, Pekanbaru, Riau</p>
+            <p>0812-3456-7890</p>
+            <p>info@delighycatering.com</p>
+        </address>
+        <p><small>&copy; 2026 Catering Delighy. Hak Cipta Dilindungi.</small></p>
+    </footer>
+</body>
+</html>
