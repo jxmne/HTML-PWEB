@@ -11,99 +11,186 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #f8f8f8;
+            padding-top: 160px; /* Jarak biar konten ga ketutup navbar fixed */
         }
+
+        /*NAVBAR FIXED & FLEXBOX */
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
             background-color: #12b368;
             color: white;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+
         nav {
             background-color: #151515;
         }
+
         nav ul {
             list-style-type: none;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
         }
+
         nav ul li a {
             display: block;
             color: white;
-            text-align: center;
             padding: 16px 24px;
             text-decoration: none;
             font-weight: 500;
+            transition: all 0.3s ease; /* ANIMASI 1 YANG PILIHAN FITUR */
         }
+
         nav ul li a:hover {
             background-color: #2c2c2c;
         }
+
         nav ul li a.active {
             background-color: #12b368;
             color: white;
         }
+
+        /* SUSUNAN UTAMA (SIDEBAR & KONTEN) */
         main {
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 20px;
             display: flex;
+            flex-direction: column; /* Mobile first ke bawah */
             gap: 30px;
         }
-        article {
+
+
+        /*SECTION GRADIENT & OVERLAY */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), linear-gradient(135deg, #12b368, #0b7a44);
+            color: white;
+            padding: 40px 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .hero-section h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        article.menu-container {
             flex: 2;
         }
+
+        
+        /* ASIDE */
         aside {
-            flex: 1;
-            background-color: #e7e7e7;
-            padding: 20px;
+            background: #e7e7e7;
+            padding: 20px; 
             border-radius: 10px;
-            align-self: start;
         }
-        section {
-            margin-bottom: 30px;
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .promo-card {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 15px;
-            margin-top: 15px;
-        }
+
         .stat-item {
             margin-bottom: 20px;
         }
+        
+        /* CONTENT */
+        section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* PROMO */
+        .promo-card {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            transition: 0.3s;
+        }
+
+        .promo-card:hover {
+            transform: scale(1.02);
+        }
+
         progress {
             width: 100%;
             height: 15px;
             border-radius: 10px;
         }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 40px;
-        }
-        footer address {
-            font-style: normal;
-            margin: 10px 0;
-        }
+
         h2, h3 {
             color: #12b368;
             margin-bottom: 15px;
         }
+
+        
+        /* TESTIMONI */
         .testimonial {
-            background-color: #f9f9f9;
+            background: #f9f9f9;
             padding: 15px;
             border-radius: 8px;
-            margin-top: 15px;
+            margin-top: 10px;
+            transition: 0.3s;
         }
+
+        .testimonial:hover {
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /*FOOTER 3 KOLOM */
+        footer {
+            background-color: #151515;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            text-align: center;
+        }
+
+        footer h4 {
+            color: #12b368;
+            margin-bottom: 15px;
+        }
+
+        footer address {
+            font-style: normal;
+        }
+
+        footer address p {
+            margin-bottom: 8px;
+        }
+
+        /* TABLET (min 768px): Card 2 Kolom */
+        @media (min-width: 768px) {
+            main {
+                flex-direction: row; /* Sidebar pindah ke samping */
+            }
+
+            footer {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
+            }
+        }
+
+        /* DESKTOP (min 1024px): Card 4 Kolom */
+        @media (min-width: 1024px) {
+            .grid-menu {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
     </style>
 </head>
 <body>
@@ -118,28 +205,31 @@
             <li><a href="index.html" class="active">Beranda</a></li>
             <li><a href="menumakan.html">Paket Catering</a></li>
             <li><a href="aktivitasriwayat.html">Aktivitas</a></li>
-            <li><a href="pesan.html">Kotak Masuk</a></li>
         </ul>
     </nav>
 
     <main>
-        <article>
-            <section>
+        <article class="menu-container">
+            <section class="hero-section">
                 <h2>Selamat Datang di Catering Delighy</h2>
-                <p>Kami menyediakan layanan pre-order catering untuk berbagai acara Anda. Semua menu kami olah dengan bahan berkualitas dan cita rasa terbaik.</p>
-                
-                <figure>
-                    <img src="https://via.placeholder.com/800x200/12b368/ffffff?text=Delighy+Catering+Banner" alt="Banner Catering Delighy" style="width:100%; border-radius:10px; margin:20px 0;">
-                </figure>
-
-                <article class="promo-card">
-                    <h3>🎉 Promo Spesial Bulan Ini</h3>
-                    <p>Diskon 15% untuk pemesanan paket Nasi Kotak minimal 25 pax! Berlaku untuk semua acara.</p>
-                    <p><strong>Periode:</strong> 10 - 31 Maret 2026</p>
-                </article>
+                <p>Menu sehat, higienis, dan lezat siap diantar ke tempat Anda.</p>
             </section>
 
-            <section>
+            <section class="promo-card">
+                <h3>🎉 Promo Spesial Bulan Ini</h3>
+                <p>Diskon 5% untuk pemesanan paket Nasi Kotak minimal 30 pax! Berlaku untuk semua menu.</p>
+                <p><strong>Periode:</strong> 1 - 30 Juni 2026</p>
+            </section>
+
+            <br>
+            <section> 
+                <h2>Hubungi Kami</h2>  
+                <a href="https://wa.me/6281234567890?text=Halo%20Catering%20Delighy,%20saya%20mau%20order%20paket..." target="_blank">
+   Pesan via WhatsApp Sekarang
+                </a>
+            </section>
+
+            <section id="fitur">
                 <h3>Mengapa Memilih Delighy?</h3>
                 <ul>
                     <li>Bahan berkualitas dan halal</li>
@@ -149,6 +239,7 @@
                 </ul>
             </section>
 
+            <!-- testimoni -->
             <section>
                 <h3>Testimoni Pelanggan</h3>
                 <article class="testimonial">
@@ -193,12 +284,14 @@
     </main>
 
     <footer>
-        <address>
+        <section style="background:transparent; padding:0; box-shadow:none; color:white; text-align:left;">
+          <address>
             <p>Jl. Kuliner Nusantara No. 15, Pekanbaru, Riau</p>
             <p>0812-3456-7890</p>
             <p>info@delighycatering.com</p>
         </address>
-        <p><small>&copy; 2026 Catering Delighy. Hak Cipta Dilindungi.</small></p>
+        <p><small>&copy; 2026 Catering Delighy. Hak Cipta Dilindungi.</small></p>  
+        </section>
     </footer>
 </body>
 </html>
