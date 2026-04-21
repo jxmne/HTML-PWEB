@@ -10,54 +10,111 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+ 
+        :root {
+            --hijau: #12b368;
+            --hijau-gelap: #0e8a50;
+            --hijau-tua: #1c4a35;
+            --krem: #f5f0e8;
+            --putih: #ffffff;
+            --teks-gelap: #1a1a1a;
+            --teks-abu: #555;
+            --emas: #c9a84c;
+        }
+ 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f8f8f8;
-            padding-top: 140px; /* Jarak biar konten ga ketutup navbar fixed */
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #f0f4f1;
+            color: var(--teks-gelap);
         }
-
-        /*NAVBAR FIXED & FLEXBOX */
+ 
+        /* HEADER */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
+            position: relative;
             width: 100%;
-            z-index: 1000;
-            background-color: #12b368;
-            color: white;
-            padding: 15px;
+            display: flex;
+            z-index: auto;
+            background: linear-gradient(to bottom, #128a60eb 100%, #98ffcfd9 70%, #2daf93eb 50%); 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
         }
-
+ 
+        header h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--putih);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            margin-top: 6px;
+        }
+ 
+        header p {
+            position: relative;
+            z-index: 2;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.88);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+ 
+        /* ===== NAV di bawah header ===== */
         nav {
-            background-color: #151515;
+            background-color: linear-gradient(rgba(17, 104, 85, 0.92), rgba(19, 193, 112, 0.85));
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid rgba(18, 179, 104, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
         }
-
+ 
         nav ul {
-            list-style-type: none;
+            list-style: none;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
         }
-
+ 
+        nav ul li {
+            position: relative;
+        }
+ 
         nav ul li a {
             display: block;
-            color: white;
-            padding: 16px 24px;
+            padding: 14px 28px;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease; /* ANIMASI 1 YANG PILIHAN FITUR */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgb(37, 35, 35);
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease, background 0.3s ease;
         }
-
+ 
+        /* Hover gradasi di nav */
         nav ul li a:hover {
-            background-color: #2c2c2c;
+            color: darkgreen;
+            background: linear-gradient(135deg, rgba(18,179,104,0.08), rgba(180,255,220,0.15));
         }
-
+ 
         nav ul li a.active {
-            background-color: #12b368;
-            color: white;
+            color: rgb(0, 128, 21);
+        }
+ 
+        /* Garis bawah aktif */
+        nav ul li a.active::after {
+            content: '';
+            display: block;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, green, #1c4a35, );
+            margin-top: -3px;
         }
 
         /* SUSUNAN UTAMA (SIDEBAR & KONTEN) */
@@ -72,7 +129,7 @@
 
         /*SECTION GRADIENT & OVERLAY */
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), linear-gradient(135deg, #12b368, #0b7a44);
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), linear-gradient(135deg, #12b36846, #0b7a44);
             color: white;
             padding: 40px 25px;
             border-radius: 10px;
@@ -166,11 +223,15 @@
 
         .card-content {
             padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px; /
         }
 
         .card-content h4 {
             color: #333;
             margin-bottom: 5px;
+            display: flex;
         }
 
         .card-content p {
@@ -210,6 +271,47 @@
 
         .search-form button:hover {
             background-color: #0b7a44;
+        }
+
+        /* Notifikasi alert konfirmasi pilihan metode makan */
+        dialog {
+            border: none;
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .modal-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-opsi {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #btn-takeaway { background-color: #12b368; color: white; }
+        #btn-dinein { background-color: #f2f2f2; color: #333; border: 1px solid #ddd; }
+
+        #btn-takeaway:hover { background-color: #0b7a44; }
+        #btn-dinein:hover { background-color: #e2e2e2; }
+
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.5);
         }
 
         /*FOOTER 3 KOLOM */
@@ -279,34 +381,32 @@
     <nav>
         <ul>
             <li><a href="index.html">Beranda</a></li>
-            <li><a href="menumakan.html" class="active">Paket Catering</a></li>
+            <li><a href="menumakancustomer.html" class="active">Menu</a></li>
+            <li><a href="pesanan.html">Pesanan</a></li>
             <li><a href="aktivitasriwayat.html">Aktivitas</a></li>
         </ul>
     </nav>
 
     <main>
-        <aside>
-            <h3>Filter Menu</h3>
-            <section class="filter-group" style="box-shadow:none; padding:0; margin:0;">
-                <label class="filter-item"><input type="checkbox"> Nasi Kotak Biasa</label>
-                <label class="filter-item"><input type="checkbox"> Nasi Kotak Diet</label>
+         <!-- janlup id min -->
+        <aside id="sidebar-filter">
+            <h2>Filter Menu</h2>
+            <section class="filter-group">
+                <label class="filter-item"><input type="checkbox"> Menu Harian</label>
+                <label class="filter-item"><input type="checkbox"> Menu Diet</label>
             </section>
         </aside>
 
         <article class="menu-container">
-            <section class="hero-section">
-                <h2>Selamat Datang di Catering Delighy</h2>
-                <p>Menu sehat, higienis, dan lezat siap diantar ke tempat Anda.</p>
-            </section>
 
             <form class="search-form" action="#">
-                <input type="text" placeholder="Cari menu catering...">
+                <input type="text" id="input-cari" placeholder="Cari menu catering...">
                 <button type="submit">Cari</button>
             </form>
 
-            <h3>Daftar Menu Catering</h3>
+            <h2>Daftar Menu</h2>
 
-            <section class="grid-menu">
+            <section id="menu-display" class="grid-menu">
                 
                 <article class="card-menu">
                     <img src="nasi kuning tumpeng.jpg" alt="Nasi Kuning">
@@ -333,24 +433,18 @@
                 </article>
 
                 <article class="card-menu">
-                    <img src="Nasi Uduk dengan Ayam Goreng.jpg" alt="Nasi Uduk dengan Ayam Goreng">
+                    <img src="Nasi Uduk dengan Ayam Goreng.jpg" alt="Nasi Uduk Ayam">
                     <section class="card-content">
                         <h4>Nasi Uduk dengan Ayam Goreng</h4>
                         <p>Rp 19.000</p>
                     </section>
                 </article>
-            </section>
 
-            <br>
-            <h3>Daftar Menu Catering Diet</h3>
-
-            <section class="grid-menu">
-                
                 <article class="card-menu">
                     <img src="nasi jagung.jpg" alt="Nasi Jagung">
                     <section class="card-content">
                         <h4>Nasi Jagung</h4>
-                        <p>Rp 19.000</p>
+                        <p>Rp 15.000</p>
                     </section>
                 </article>
 
@@ -358,12 +452,23 @@
                     <img src="nasi merah tumis brokoli.jpg" alt="Nasi Merah Tumis Brokoli">
                     <section class="card-content">
                         <h4>Nasi Merah Tumis Brokoli</h4>
-                        <p>Rp 15.000</p>
+                        <p>Rp 19.000</p>
                     </section>
                 </article>
             </section>
         </article>
     </main>
+
+    <dialog id="modal-opsi" style="border: none; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 320px; text-align: center;">
+        <header>
+            <h3 style="margin-bottom: 10px;">Pilih Metode</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Silakan pilih cara penyajian pesanan Anda.</p>
+        </header>
+        <footer style="display: flex; gap: 10px; justify-content: center;">
+            <button id="btn-ta" style="background: #12b368; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; flex: 1;">Take Away</button>
+            <button id="btn-di" style="background: #f0f0f0; color: #333; border: 1px solid #ccc; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; flex: 1;">Dine In</button>
+        </footer>
+    </dialog>
 
     <footer>
         <section class="footer-section">
@@ -375,5 +480,7 @@
         <p><small>&copy; 2026 Catering Delighy. Hak Cipta Dilindungi.</small></p>  
         </section>
     </footer>
+
+    <script src="menumakancustomer.js"></script>
 </body>
 </html>
