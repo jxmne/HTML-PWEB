@@ -162,35 +162,35 @@ document.querySelector('#sidebar-filter')?.addEventListener('change', (e) => {
  
     if (e.target.name === 'hari') {
         filterAktif.hari = e.target.checked ? e.target.value : '';
-        // Pastikan hanya satu checkbox hari aktif sekaligus
         document.querySelectorAll('input[name="hari"]').forEach(cb => {
             if (cb !== e.target) cb.checked = false;
         });
+        filterAktif.hari = e.target.checked ? e.target.value : '';
         applyFilter();
     }
 });
  
-// 11. Event: Hapus Pesanan (event delegation pada grid kartu)
-document.querySelector('#kartu-pesanan')?.addEventListener('click', (e) => {
-    if (e.target.classList.contains('btn-hapus')) {
-        const idHapus = parseInt(e.target.dataset.id);
-        const konfirmasi = confirm('Hapus pesanan ini dari riwayat?');
-        if (!konfirmasi) return;
+// // 11. Event: Hapus Pesanan (event delegation pada grid kartu)
+// document.querySelector('#kartu-pesanan')?.addEventListener('click', (e) => {
+//     if (e.target.classList.contains('btn-hapus')) {
+//         const idHapus = parseInt(e.target.dataset.id);
+//         const konfirmasi = confirm('Hapus pesanan ini dari riwayat?');
+//         if (!konfirmasi) return;
  
-        let pesanan = getDaftarPesanan();
-        pesanan = pesanan.filter(p => p.id !== idHapus);
-        localStorage.setItem('pesanan', JSON.stringify(pesanan));
-        applyFilter();
-    }
-});
+//         let pesanan = getDaftarPesanan();
+//         pesanan = pesanan.filter(p => p.id !== idHapus);
+//         localStorage.setItem('pesanan', JSON.stringify(pesanan));
+//         applyFilter();
+//     }
+// });
  
-// 12. Event: Tombol Hapus Semua
-document.querySelector('#btn-hapus-semua')?.addEventListener('click', () => {
-    if (confirm('Hapus SEMUA riwayat pesanan?')) {
-        localStorage.removeItem('pesanan');
-        applyFilter();
-    }
-});
+// // 12. Event: Tombol Hapus Semua
+// document.querySelector('#btn-hapus-semua')?.addEventListener('click', () => {
+//     if (confirm('Hapus SEMUA riwayat pesanan?')) {
+//         localStorage.removeItem('pesanan');
+//         applyFilter();
+//     }
+// });
  
 // 13. Inisialisasi saat DOM siap
 document.addEventListener('DOMContentLoaded', () => {

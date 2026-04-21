@@ -27,7 +27,7 @@ const renderMenu = (data = daftarProduk) => {
                 <h4>${produk.nama}</h4>
                 <p>Rp ${produk.harga.toLocaleString('id-ID')}</p>
                 <small style="color: #666; display: block; margin-bottom: 10px;">${produk.kategori}</small>
-                <button class="btn-pesan" style="width: 100%; background-color: #309e6c; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background 0.3s;">
+                <button class="btn-pesan">
                     Pesan Sekarang
                 </button>
             </section>

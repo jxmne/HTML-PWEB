@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Render grid kartu
+    // Render grid kartu + tombol edit & hapus
     container.innerHTML = dataPesanan.map(item => `
         <article class="order-card">
             <section class="order-left">
@@ -31,8 +31,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Jumlah: <strong>${item.jumlah}</strong> Kotak</p>
                 <span class="badge-proses">${item.status || 'Proses'}</span>
             </section>
-        </article>
+
+                <nav class="order-actions">
+                    <button class="btn-edit"  data-id="${item.id}">✏️ Edit</button>
+                    <button class="btn-hapus" data-id="${item.id}">🗑️ Hapus</button>
+                </nav>
+            </article>
     `).join('');
+
+    // ── Event Delegation: Edit & Hapus ───────────────────────────
+    // Satu listener di #daftar-pesanan menangkap semua klik tombol
+    document.querySelector('#daftar-pesanan')?.addEventListener('click', (e) => {
+        const id   = parseInt(e.target.dataset.id);
+        let   data = getPesanan();
+    
+        // HAPUS
+        if (e.target.classList.contains('btn-hapus')) {
+            if (!confirm('Hapus pesanan ini?')) return;
+            setPesanan(data.filter(p => p.id !== id));
+            render();
+            return;
+        }
+    
+        // EDIT 
+        if (e.target.classList.contains('btn-edit')) {
+            const item = data.find(p => p.id === id);
+            if (!item) return;
+    
+            const inputBaru = prompt(`Edit jumlah untuk "${item.nama}":`, item.jumlah);
+            if (inputBaru === null) return;                         
+    
+            const jumlahBaru = parseInt(inputBaru);
+            if (isNaN(jumlahBaru) || jumlahBaru < 1) {
+                alert('Jumlah harus berupa angka lebih dari 0!');
+                return;
+            }
+    
+            item.jumlah = jumlahBaru;   
+            setPesanan(data);
+            render();
+        }
+    });
 
     // Render tabel ringkasan
     const tabelWrapper = document.querySelector('#tabel-wrapper');
@@ -62,4 +101,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>Rp ${totalHarga.toLocaleString('id-ID')}</td>
             </tr>`;
     }
+
+    // Render tombol terima
+    document.querySelector('#btn-diterima')?.addEventListener('click', () => {
+        const data = getPesanan();
+        if (data.length === 0) { alert('Tidak ada pesanan.'); return; }
+        if (!confirm(`Konfirmasi ${data.length} pesanan sebagai "Diterima"?`)) return;
+        pindahKeRiwayat(data);
+        localStorage.removeItem('pesanan');
+        alert('Pesanan diterima! Lihat halaman Aktivitas untuk riwayat.');
+        render();
+    });
+ 
+    render();
+
+    document.addEventListener('DOMContentLoaded', render);
 });
