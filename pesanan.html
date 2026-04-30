@@ -222,7 +222,28 @@
             cursor: pointer;
             transition: background 0.3s ease;
         }
-        #btn-diterima {
+
+        #input {
+            width: 60px;
+            padding: 4px 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .btn-simpan {
+            background-color: #28a77d;
+            color: white;
+            border: none;
+            padding: 4px 6px;
+            border-radius: 6px;
+            font-weight: 600;
+            gap: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #btn-beli {
             width: 100%;
             background-color: #2bac83;
             color: white;
@@ -234,7 +255,7 @@
             cursor: pointer;
             transition: background 0.3s ease;
         }
-        .btn-diterima-wrapper {
+        .btn-beli-wrapper {
             margin-top: 16px;
             align-items: center;
             display: flex;
@@ -282,6 +303,63 @@
         footer h4    { color: #12b368; margin-bottom: 12px; }
         footer address { font-style: normal; }
         footer address p { margin-bottom: 6px; font-size: 0.88rem; color: #aaa; }
+
+        /* KONFIRM HAPUS */
+        #modal-hapus dialog {
+            border: none;
+            border-radius: 15px;
+            padding: 25px;
+            width: 90%; /* Responsif di HP */
+            max-width: 350px; /* Lebar maksimal di Laptop */
+            
+            /* Agar benar-benar di tengah layar */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            background-color: white;
+        }
+
+        /* Gelapkan latar belakang saat modal muncul */
+        #modal-hapus dialog::backdrop {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px); /* Efek blur ala Apple/Windows modern */
+        }
+
+        /* Tombol di dalam modal */
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        #modal-batal, #modal-konfirm {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+
+        #modal-batal {
+            background: #eee;
+            color: #555;
+        }
+
+        #modal-konfirm {
+            background: #dc3545; /* Merah untuk tanda bahaya/hapus */
+            color: white;
+        }
+
+        #modal-konfirm:hover {
+            background: #b02a37;
+            transform: scale(1.02);
+        }
 
         /* TABLET (min 768px): Card 2 Kolom */
         @media (min-width: 768px) {
@@ -347,9 +425,23 @@
                 <tfoot></tfoot>
             </table>
         </section>
-        <nav class="btn-diterima-wrapper"><button id="btn-diterima">Beli</button></nav>
+        <nav class="btn-beli-wrapper">
+            <button id="btn-beli">Beli Sekarang</button>
+        </nav>
     
     </main>
+
+    <!-- konfirm hapus -->
+    <aside id="modal-hapus">
+        <dialog>
+            <h3>Hapus Pesanan?</h3>
+            <p>Item ini akan dihapus dari daftar pesananmu sebelum dibeli.</p>
+            <nav class="modal-actions">
+                <button id="modal-batal">Batal</button>
+                <button id="modal-konfirm">Hapus</button>
+            </nav>
+        </dialog>
+    </aside>
 
     <footer>
         <section class="footer-section">
